@@ -32,7 +32,7 @@
         .owl-light {
             width: 100%;
             background-color: rgba(255,255,255,0.3);
-            overflow: hidden;
+            overflow: visible;
         }
 
         .mdl-data-table {
@@ -45,16 +45,16 @@
                 <h1>App-Contacts</h1>
             </header>
             <section id="form" class="mdl-cell mdl-cell--4-offset mdl-cell--7-col">
-                <h2>Save Contact</h2>
+                <h2 class="mdl-cell mdl-cell--7-col" style="text-align:center">&times; Save Contact</h2>
                 <h:form>
                     <h:inputHidden value="#{contacts.contact.id}"/>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--7-col">
-                        <h:inputText class="mdl-textfield__input" id="name" 
+                        <h:inputText class="mdl-textfield__input" id="name" required="true"
                                      value="#{contacts.contact.name}"/>
                         <label class="mdl-textfield__label" for="name">Contact's name...</label>
                     </div><br/>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--7-col">
-                        <h:inputText class="mdl-textfield__input" id="email" 
+                        <h:inputText class="mdl-textfield__input" id="email" required="true"
                                      value="#{contacts.contact.email}"/>
                         <label class="mdl-textfield__label" for="email">Contact's e-mail...</label>
                     </div><br/>
@@ -63,7 +63,7 @@
                 </h:form>
             </section><br/><br/>
             <section class="mdl-cell mdl-cell--2-offset mdl-cell--10-col">
-                <h2 style="margin: auto">All contacts</h2>
+                <h2 class="mdl-cell mdl-cell--10-col" style="text-align:center">&times; All contacts</h2>
                 <h:dataTable class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--10-col" 
                              var="contact" value="#{contacts.allContacts()}">
                     <h:column>
@@ -85,9 +85,7 @@
                         <h:outputText value="#{contact.email}"/>
                     </h:column>
                     <h:column>
-                        <f:facet class="mdl-data-table__cell--non-numeric" name="header">
-                            Edit
-                        </f:facet>
+                        <f:facet class="mdl-data-table__cell--non-numeric" name="header">Edit</f:facet>
                         <h:form>
                             <h:commandButton 
                                 class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
@@ -95,12 +93,10 @@
                         </h:form>
                     </h:column>
                     <h:column>
-                        <f:facet class="mdl-data-table__cell--non-numeric" name="header">
-                            Remove
-                        </f:facet>
+                        <f:facet class="mdl-data-table__cell--non-numeric" name="header">Remove</f:facet>
                         <h:form>
                             <h:commandButton 
-                                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
                                 value="Delete" action="#{contacts.remove(contact)}"/>
                         </h:form>
                     </h:column>

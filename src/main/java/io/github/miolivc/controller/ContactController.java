@@ -23,7 +23,7 @@ public class ContactController {
             service.add(contact);
         }
         contact = new Contact();
-        return null;
+        return "index.xhtml?faces-redirect=true";
     }
     
     public String remove(Contact contact) {
