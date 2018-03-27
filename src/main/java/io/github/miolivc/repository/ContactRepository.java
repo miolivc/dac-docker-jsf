@@ -41,7 +41,7 @@ public class ContactRepository implements Repository {
     @Override
     public List<Contact> get() {
         return manager
-                .createQuery("SELECT c FROM Contact c", Contact.class)
+                .createQuery("SELECT c FROM Contact c ORDER BY c.name ASC", Contact.class)
                 .getResultList();
     }
 }

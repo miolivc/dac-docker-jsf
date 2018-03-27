@@ -64,6 +64,15 @@
             </section><br/><br/>
             <section class="mdl-cell mdl-cell--2-offset mdl-cell--10-col">
                 <h2 class="mdl-cell mdl-cell--10-col" style="text-align:center">&times; All contacts</h2>
+                <h:form>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--10-col">
+                        <h:inputText class="mdl-textfield__input" id="search"
+                                     value="#{contacts.search}">
+                            <f:ajax listener="#{contacts.contactsFilter}" render=""/>
+                        </h:inputText>
+                        <label class="mdl-textfield__label" for="search">Write a name...</label>
+                    </div><br/>
+                </h:form>
                 <h:dataTable class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--10-col" 
                              var="contact" value="#{contacts.allContacts()}">
                     <h:column>
