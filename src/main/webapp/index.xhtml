@@ -7,38 +7,8 @@
         <title>App Contacts</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
     </h:head>
-    <style>
-        hmtl, body , .owl-light {
-            max-width: 100% !important;
-            margin: 0 auto !important;
-            padding: 0;
-        }
-        body {
-            background-image: url("http://boarettoimoveis.com.br/wp-content/uploads/2014/03/background-contacts.jpg");
-        }
-
-        header {
-            background-color:  rgba(255,255,255,0.5);
-            text-align: center;
-            margin: 0 auto !important;
-            min-width: 100%;
-        }
-
-        section {
-            margin-top: 1%;
-        }
-
-        .owl-light {
-            width: 100%;
-            background-color: rgba(255,255,255,0.3);
-            overflow: visible;
-        }
-
-        .mdl-data-table {
-            background-color: rgba(255,255,255,0.5);
-        }
-    </style>
     <h:body class="mdl-grid owl-light">
         <div class="owl-light">
             <header class="mdl-cell mdl-cell--12-col">
@@ -75,11 +45,17 @@
                 </h:form>
                 <h:dataTable class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--10-col"
                              id="table" var="contact" value="#{contacts.allContacts()}">
+                    <!--                    <h:column>
+                                            <f:facet class="mdl-data-table__cell-numeric" name="header">
+                                                ID
+                                            </f:facet>
+                                            <h:outputText value="#{contact.id}"/>
+                                        </h:column>-->
                     <h:column>
                         <f:facet class="mdl-data-table__cell--numeric" name="header">
-                            ID
+                            Letter
                         </f:facet>
-                        <h:outputText value="#{contact.id}"/>
+                        <strong><h:outputText value="#{contact.name.toUpperCase().charAt(0)}"/></strong>
                     </h:column>
                     <h:column>
                         <f:facet class="mdl-data-table__cell--non-numeric" name="header">

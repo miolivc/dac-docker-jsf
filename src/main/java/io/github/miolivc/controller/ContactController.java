@@ -30,9 +30,11 @@ public class ContactController {
     public void contactsFilter(AjaxBehaviorEvent event) {
 //        System.out.println("changed value: " + search);
         this.contacts = contacts.stream()
-                .filter(c -> c.getName().toLowerCase().startsWith(search.toLowerCase()))
+                .filter(c -> c.getName()
+                              .toLowerCase()
+                                .startsWith(search.toLowerCase()))
                 .collect(Collectors.toList());
-        this.contacts.stream().forEach(c -> System.out.println(c.getName()));
+//        this.contacts.stream().forEach(c -> System.out.println(c.getName()));
     }
     
     public String save() {
