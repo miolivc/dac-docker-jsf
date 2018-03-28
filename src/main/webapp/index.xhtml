@@ -38,7 +38,7 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--10-col">
                         <h:inputText class="mdl-textfield__input" id="search"
                                      value="#{contacts.search}">
-                            <f:ajax event="keyup" listener="#{contacts.contactsFilter}" render="table" delay="100" />
+                            <f:ajax event="keyup" listener="#{contacts.contactsFilter}" render="table" delay="1" />
                         </h:inputText>
                         <label class="mdl-textfield__label" for="search">Write a name...</label>
                     </div><br/>
@@ -74,7 +74,7 @@
                         <h:form>
                             <h:commandButton 
                                 class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                                value="Edit" action="#{contacts.setContact(contact)}"/>
+                                value="Edit" immediate="true" action="#{contacts.setContact(contact)}"/>
                         </h:form>
                     </h:column>
                     <h:column>
@@ -82,7 +82,7 @@
                         <h:form>
                             <h:commandButton 
                                 class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
-                                value="Delete" action="#{contacts.remove(contact)}"/>
+                                value="Delete" immediate="true" action="#{contacts.remove(contact)}"/>
                         </h:form>
                     </h:column>
                 </h:dataTable>

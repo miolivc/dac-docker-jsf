@@ -16,7 +16,7 @@ public class Contact implements Serializable {
     @Id
     @GeneratedValue(generator = "contact_seq", strategy = GenerationType.SEQUENCE)
     private int id;
-    @Column(length = 30, nullable = false)
+    @Column(length = 45, nullable = false)
     private String name;
     @Column(length = 30, nullable = false, unique = true)
     private String email;
