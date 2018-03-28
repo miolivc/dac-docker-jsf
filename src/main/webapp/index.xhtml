@@ -38,7 +38,7 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--10-col">
                         <h:inputText class="mdl-textfield__input" id="search"
                                      value="#{contacts.search}">
-                            <f:ajax listener="#{contacts.contactsFilter}" render="table" delay="1" />
+                            <f:ajax event="keyup" listener="#{contacts.contactsFilter}" render="table" delay="100" />
                         </h:inputText>
                         <label class="mdl-textfield__label" for="search">Write a name...</label>
                     </div><br/>
