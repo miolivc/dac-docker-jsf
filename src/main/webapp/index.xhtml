@@ -68,13 +68,13 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--10-col">
                         <h:inputText class="mdl-textfield__input" id="search"
                                      value="#{contacts.search}">
-                            <f:ajax listener="#{contacts.contactsFilter}" render=""/>
+                            <f:ajax listener="#{contacts.contactsFilter}" render="table" delay="1" />
                         </h:inputText>
                         <label class="mdl-textfield__label" for="search">Write a name...</label>
                     </div><br/>
                 </h:form>
-                <h:dataTable class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--10-col" 
-                             var="contact" value="#{contacts.allContacts()}">
+                <h:dataTable class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--10-col"
+                             id="table" var="contact" value="#{contacts.allContacts()}">
                     <h:column>
                         <f:facet class="mdl-data-table__cell--numeric" name="header">
                             ID

@@ -5,6 +5,7 @@ import io.github.miolivc.domain.Contact;
 import io.github.miolivc.service.ContactService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -27,7 +28,11 @@ public class ContactController {
     }
     
     public void contactsFilter(AjaxBehaviorEvent event) {
-        System.out.println("changed" + search);
+//        System.out.println("changed value: " + search);
+        this.contacts = contacts.stream()
+                .filter(c -> c.getName().toLowerCase().startsWith(search.toLowerCase()))
+                .collect(Collectors.toList());
+        this.contacts.stream().forEach(c -> System.out.println(c.getName()));
     }
     
     public String save() {
