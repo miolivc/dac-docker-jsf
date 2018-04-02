@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>App Contacts</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
@@ -43,20 +44,23 @@
                         <label class="mdl-textfield__label" for="search">Write a name...</label>
                     </div><br/>
                 </h:form>
+
+                <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect mdl-cell--12-col"
+                     style="margin-left: 0 !important; padding-left: 0 !important">
+                    <div class="mdl-tabs__tab-bar mdl-cell--12-col">
+                        <ui:repeat value="#{contacts.letters}" var="letter">
+                            <h:link class="mdl-tabs__tab is-active" value="#{letter}">
+                                <f:ajax event="click" listener="#{contacts.letterContactsFilter}" 
+                                        render="table" immediate="true">
+                                    <f:attribute name="letter" value="#{letter}"/>
+                                </f:ajax>
+                            </h:link>
+                        </ui:repeat>
+                    </div>
+                </div>
+
                 <h:dataTable class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--10-col"
                              id="table" var="contact" value="#{contacts.allContacts()}">
-                    <!--                    <h:column>
-                                            <f:facet class="mdl-data-table__cell-numeric" name="header">
-                                                ID
-                                            </f:facet>
-                                            <h:outputText value="#{contact.id}"/>
-                                        </h:column>-->
-                    <h:column>
-                        <f:facet class="mdl-data-table__cell--numeric" name="header">
-                            Letter
-                        </f:facet>
-                        <strong><h:outputText value="#{contact.name.toUpperCase().charAt(0)}"/></strong>
-                    </h:column>
                     <h:column>
                         <f:facet class="mdl-data-table__cell--non-numeric" name="header">
                             Name
@@ -86,6 +90,7 @@
                         </h:form>
                     </h:column>
                 </h:dataTable>
+
             </section>
         </div>
         <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>

@@ -44,4 +44,13 @@ public class ContactRepository implements Repository {
                 .createQuery("SELECT c FROM Contact c ORDER BY c.name ASC", Contact.class)
                 .getResultList();
     }
+
+    @Override
+    public List<Contact> get(String letter) {
+        return manager
+                .createQuery("SELECT c FROM Contact c WHERE LOWER(c.name) LIKE"
+                        + " LOWER(':letter%') ORDER BY c.name ASC", Contact.class)
+                .setParameter("letter", letter)
+                .getResultList();
+    }
 }

@@ -33,4 +33,8 @@ public class ContactService {
         return repository.get();
     }
     
+    public List<Contact> getByFirstLetter(String letter) {
+        return repository.get(letter);
+    }
+    
 }

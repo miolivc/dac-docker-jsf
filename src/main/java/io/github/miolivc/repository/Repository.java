@@ -19,5 +19,6 @@ public interface Repository {
     Contact get(int id);
     List<Contact> get();
     void remove(Contact contact);
+    List<Contact> get(String letter);
     
 }
